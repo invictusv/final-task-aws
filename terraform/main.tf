@@ -160,8 +160,8 @@ module "s3_bucket" {
   key            = "terraform/final/terraform.tfstate"
   region         = var.region
   profile        = var.profile
-  dynamodb_table = "nichiporenko-dt"
-  encrypt        = true
+  
+  
 
 
 
