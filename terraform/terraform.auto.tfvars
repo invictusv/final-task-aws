@@ -10,7 +10,5 @@ db_version = "5.7"
 pass = "vmnwordpress"
 region = "us-east-1"  
 
-
 access_key = "AKIAQ4YONN2MV2NQNTNY"
 secret_key = "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"
-
