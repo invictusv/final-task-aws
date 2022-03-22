@@ -147,7 +147,7 @@ module "ec2_instance" {
   tags = {
     Namespace = var.namespace,
     Stage     = var.stage,
-    Name      = "${var.namespace}-db"
+    Name      = "${var.namespace}-ec2"
   }
 }
 
