@@ -157,13 +157,6 @@ module "s3_bucket" {
 
   bucket = "nichiporenko-backend"
   acl    = "private"
-  key            = "terraform/final/terraform.tfstate"
-  region         = var.region
-  profile        = var.profile
-  
-  
-
-
 
   versioning = {
     enabled = true
