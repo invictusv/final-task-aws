@@ -69,7 +69,7 @@ module "ec2_security_group" {
 
 }
 
-module "db" {
+/*module "db" {
   source = "terraform-aws-modules/rds/aws"
   version = "4.1.2"
   identifier = var.db_identifier
@@ -129,7 +129,7 @@ module "db" {
     "Sensitive" = "high"
   }
 }
-
+*/
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "3.4.0"
@@ -144,10 +144,35 @@ module "ec2_instance" {
   associate_public_ip_address = true
   user_data = file("gitlab-runner.sh")
 
-
   tags = {
     Namespace = var.namespace,
     Stage     = var.stage,
-    Name      = "${var.namespace}-ec2-instance"
+    Name      = "${var.namespace}-db"
   }
+}
+
+
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket = "nichiporenko-backend"
+  acl    = "private"
+  key            = "terraform/final/terraform.tfstate"
+  region         = var.region
+  profile        = var.profile
+  dynamodb_table = "nichiporenko-dt"
+  encrypt        = true
+
+
+
+  versioning = {
+    enabled = true
+  }
+
+  tags = {
+    Namespace = "${var.namespace}",
+    Stage     = "${var.namespace}",
+    Name      = "${var.namespace}-s3-bucket"
+  }
+
 }

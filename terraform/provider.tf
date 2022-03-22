@@ -10,14 +10,15 @@ provider "aws" {
    public_key = "ssh-rsa AAAAB3NzaC1y...and-so-on...1 email@example.com"
 }
 */
-/*terraform {
+/*
+terraform {
 
   backend "s3" {
     
     bucket         = "nichiporenko-backend"
     key            = "terraform/final/terraform.tfstate"
     region         = "us-east-1"
-    profile = "final"
+    profile        = "final"
     dynamodb_table = "nichiporenko-dt"
     encrypt        = true
 
