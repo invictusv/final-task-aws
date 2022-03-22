@@ -45,6 +45,7 @@ variable "profile" {
     
 }
 
+/*
 variable "db_identifier" {
   description = "Identifier db"
   type        = string
@@ -65,7 +66,7 @@ variable "db_version" {
   description = "Version engine db"
   type        = string
 }
-
+*/
 variable "instance_class" {
   description = "Instance type"
   type        = string
@@ -78,6 +79,7 @@ variable "storage" {
   default     = "20"
 }
 
+/*
 variable "db_user" {
   description = "Db user"
   type        = string
@@ -89,7 +91,7 @@ variable "pass" {
   type        = string
   default     = "vmnwordpress"
 }
-
+*/
 variable "port" {
   description = "Port for connection to db"
   type        = number
