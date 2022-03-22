@@ -131,18 +131,20 @@ module "ec2_security_group" {
 }
 */
 module "ec2_instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "3.4.0"
+  source                 = "terraform-aws-modules/ec2-instance/aws"
+  version                = "3.4.0"
+
   name = "${var.namespace}-ec2"
-  ami           = "ami-04505e74c0741db8d"
-  instance_type = "t2.micro"
+  ami                    = "ami-04505e74c0741db8d"
+  instance_type          = "t2.micro"
   key_name               = "${var.namespace}"
   monitoring             = false
   vpc_security_group_ids = [module.ec2_security_group.security_group_id]
   subnet_id              = element(module.vpc.public_subnets, 0)
 
   associate_public_ip_address = true
-  user_data = file("gitlab-runner.sh")
+  user_data              = file("gitlab-runner.sh")
+
 
   tags = {
     Namespace = var.namespace,
