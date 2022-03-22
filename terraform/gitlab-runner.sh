@@ -25,6 +25,6 @@ sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab
 sudo gitlab-runner start
 
 # Command to register runner
-sudo gitlab-runner register --non-interactive --name ec2 --url https://devops-course-7340241-gitlab.leverx-group.com/  --registration-token xR3XxCRiGxM7WditWP3D --executor shell --tag-list vmn2
+sudo gitlab-runner register --non-interactive --name ec2 --url https://devops-course-7340241-gitlab.leverx-group.com/ --registration-token 6UxkP383BEZNnFvLPLmf --executor shell --tag-list vmn2
 sudo usermod -a -G sudo gitlab-runner 
 
