@@ -2,7 +2,7 @@
 stages:
  # - validate
  # - plan
-  - apply
+  - deploy
 
 
 #validate:
@@ -26,15 +26,13 @@ stages:
    # - vmn2
 
 apply:
-  stage: apply
+  stage: deploy
   script:
-
-   
     #-terraform apply configure.terraform
     - sudo service docker start
     - docker version
-    #-docker-compose --file ./docker-compose.yml up --detach
-    - docker-compose up --detach
+    - docker-compose --file ./docker-compose.yml up --detach
+    #- docker-compose up --detach
 
   #dependencies:
   #  - plan
