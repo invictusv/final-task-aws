@@ -29,8 +29,8 @@ apply:
   stage: apply
   script:
     #- terraform apply configure.terraform
-    #- docker-compose --file ./docker-compose.yml up --detach
-    - docker-compose up --detach
+    - docker-compose --file ./docker-compose.yml up --detach
+    #- docker-compose up --detach
 
   #dependencies:
   #  - plan
