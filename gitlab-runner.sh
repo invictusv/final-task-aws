@@ -28,6 +28,9 @@ echo "${nginx_conf}" > nginx/server.conf
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
+
+sudo chmod 666 /var/run/docker.sock
+
 docker-compose up
 sudo systemctl restart docker
 
