@@ -135,7 +135,7 @@ module "ec2_instance" {
   version                = "3.4.0"
 
   name = "${var.namespace}-ec2"
-  ami                    = "ami-04505e74c0741db8d"
+  ami                    = "ami-0b0ea68c435eb488d" #"ami-04505e74c0741db8d"
   instance_type          = "t2.micro"
   key_name               = "${var.namespace}"
   monitoring             = false
