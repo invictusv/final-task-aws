@@ -69,67 +69,7 @@ module "ec2_security_group" {
 
 }
 
-/*module "db" {
-  source = "terraform-aws-modules/rds/aws"
-  version = "4.1.2"
-  identifier = var.db_identifier
 
-  engine               = var.db_engine
-  engine_version       = var.db_version
-  family               = "${var.db_engine}5.7" # DB parameter group
-  major_engine_version = "5.7"                 # DB option group
-  instance_class       = var.instance_class
-  allocated_storage     = var.storage
-  storage_encrypted     = false
-  max_allocated_storage = 100
-  db_name  = var.dbname
-  username = var.db_user
-  password = var.pass
-  port     = var.port
-
-  multi_az               = false
-  create_db_subnet_group = true
-  subnet_ids             = module.vpc.database_subnets
-  vpc_security_group_ids = [module.db_security_group.security_group_id]
-
-  maintenance_window = "Mon:00:00-Mon:02:00"
-  backup_window      = "02:00-04:00"
-
-  backup_retention_period = 0
-  skip_final_snapshot     = true
-  deletion_protection     = false
-
-  parameters = [
-    {
-      name  = "character_set_client"
-      value = "utf8mb4"
-    },
-    {
-      name  = "character_set_server"
-      value = "utf8mb4"
-    }
-  ]
-
-  tags = {
-    Namespace = var.namespace,
-    Stage     = var.stage,
-    Name      = "${var.namespace}-db"
-  }
-
-  db_instance_tags = {
-    "Sensitive" = "high"
-  }
-  db_option_group_tags = {
-    "Sensitive" = "low"
-  }
-  db_parameter_group_tags = {
-    "Sensitive" = "low"
-  }
-  db_subnet_group_tags = {
-    "Sensitive" = "high"
-  }
-}
-*/
 module "ec2_instance" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "3.4.0"
