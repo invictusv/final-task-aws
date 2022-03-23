@@ -28,10 +28,12 @@ stages:
 apply:
   stage: apply
   script:
-    #- terraform apply configure.terraform
+
+     - docker ps
+    #-terraform apply configure.terraform
     - sudo service docker start
-    - docker-compose --file ./docker-compose.yml up --detach
-    #- docker-compose up --detach
+    #-docker-compose --file ./docker-compose.yml up --detach
+    - docker-compose up --detach
 
   #dependencies:
   #  - plan
