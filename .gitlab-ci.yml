@@ -1,37 +1,21 @@
 
 stages:
-  - validate
-  - plan
-  - apply
+  - build
+  - test
   - deploy
 
 
-validate:
-  stage: validate
+build:
+  stage: build
   script:
-   - terraform init -reconfigure
-   - terraform validate
-  tags:
-   - vmn2
-
-plan:
-  stage: plan
-  script: 
-   - terraform plan -var-file="./env/terraform.tfvars" -out "configure.terraform"
-  dependencies:
-   - validate
-  artifacts:
-      paths:
-        - configure.terraform
+    - echo "Build"
   tags:
     - vmn2
 
-apply:
-  stage: apply
+test:
+  stage: test
   script:
-    - terraform apply configure.terraform
-  dependencies:
-    - plan
+    - echo "Test"
   tags:
     - vmn2
 
@@ -44,6 +28,6 @@ deploy:
     #- docker-compose up --detach
 
   dependencies:
-    - plan
+    - test
   tags:
     - vmn2
