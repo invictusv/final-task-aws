@@ -29,7 +29,7 @@ apply:
   stage: apply
   script:
 
-     - docker ps
+    - docker ps
     #-terraform apply configure.terraform
     - sudo service docker start
     #-docker-compose --file ./docker-compose.yml up --detach
