@@ -1,23 +1,6 @@
 
 stages:
-  - build
-  - test
   - deploy
-
-
-build:
-  stage: build
-  script:
-    - echo "Build"
-  tags:
-    - vmn2
-
-test:
-  stage: test
-  script:
-    - echo "Test"
-  tags:
-    - vmn2
 
 deploy:
   stage: deploy
@@ -27,7 +10,7 @@ deploy:
     - docker-compose --file ./docker-compose.yml up --detach
     #- docker-compose up --detach
 
-  dependencies:
-    - test
+  #dependencies:
+  #  - test
   tags:
     - vmn2
