@@ -10,10 +10,19 @@ build:
     - echo "sudo service docker start"
     - echo "docker version"
     - echo "docker-compose --file ./docker-compose.yml up --detach"
-    #- docker-compose up --detach
 
-  #dependencies:
-  #  - test
+  tags:
+    - vmn2
+
+test:
+  stage: test
+  script:
+    - echo "test sudo service docker start"
+    - echo "test docker version"
+    - echo "test docker-compose --file ./docker-compose.yml up --detach"
+
+  dependencies:
+    - build
   tags:
     - vmn2
 
@@ -23,9 +32,10 @@ deploy:
     - sudo service docker start
     - docker version
     - docker-compose --file ./docker-compose.yml up --detach
-    #- docker-compose up --detach
+    - echo "Deployment of containers DB mysql, CMS Wordpress, Proxy Server Nginx"
 
-  #dependencies:
-  #  - test
+
+  dependencies:
+    - test
   tags:
     - vmn2
