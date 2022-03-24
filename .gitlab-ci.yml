@@ -2,6 +2,48 @@
 stages:
   - deploy
 
+
+
+stages:
+  - validate
+  - plan
+  - apply
+
+
+before_script:
+  - terraform --version
+  - cd /home/final
+
+validate:
+  stage: validate
+  script:
+    - terraform init -reconfigure
+    - terraform validate
+  tags:
+    - vmn2
+
+plan:
+  stage: plan
+  script: 
+    - terraform plan -var-file="./env/terraform.tfvars" -out "configure.terraform"
+  dependencies:
+    - validate
+  artifacts:
+      paths:
+      - configure.terraform
+  tags:
+    - vmn2
+
+apply:
+  stage: apply
+  script:
+    - terraform apply configure.terraform
+  dependencies:
+    - plan
+  tags:
+    - vmn2
+
+
 deploy:
   stage: deploy
   script:
