@@ -1,18 +1,12 @@
 
 stages:
-  - deploy
-
-
-
-stages:
   - validate
   - plan
   - apply
-
+  - deploy
 
 before_script:
   - terraform --version
-  - cd /home/final
 
 validate:
   stage: validate
